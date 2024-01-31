@@ -87,7 +87,6 @@ import com.tari.android.wallet.ui.fragment.settings.allSettings.row.SettingsRowS
 import com.tari.android.wallet.ui.fragment.settings.allSettings.row.SettingsRowViewDto
 import com.tari.android.wallet.ui.fragment.settings.allSettings.title.SettingsTitleViewHolderItem
 import com.tari.android.wallet.ui.fragment.settings.allSettings.version.SettingsVersionViewHolderItem
-import com.tari.android.wallet.ui.fragment.settings.backup.data.BackupSettingsRepository
 import com.tari.android.wallet.ui.fragment.settings.userAutorization.BiometricAuthenticationViewModel
 import com.tari.android.wallet.yat.YatAdapter
 import com.tari.android.wallet.yat.YatSharedRepository
@@ -103,9 +102,6 @@ class AllSettingsViewModel : CommonViewModel() {
 
     @Inject
     lateinit var yatAdapter: YatAdapter
-
-    @Inject
-    lateinit var backupSettingsRepository: BackupSettingsRepository
 
     @Inject
     lateinit var backupManager: BackupManager

@@ -80,6 +80,7 @@ import com.tari.android.wallet.ui.fragment.settings.backgroundService.Background
 import com.tari.android.wallet.ui.fragment.settings.backup.backupOnboarding.BackupOnboardingFlowFragment
 import com.tari.android.wallet.ui.fragment.settings.backup.backupSettings.BackupSettingsFragment
 import com.tari.android.wallet.ui.fragment.settings.backup.changeSecurePassword.ChangeSecurePasswordFragment
+import com.tari.android.wallet.ui.fragment.settings.backup.data.BackupOptionType
 import com.tari.android.wallet.ui.fragment.settings.backup.enterCurrentPassword.EnterCurrentPasswordFragment
 import com.tari.android.wallet.ui.fragment.settings.backup.verifySeedPhrase.VerifySeedPhraseFragment
 import com.tari.android.wallet.ui.fragment.settings.backup.writeDownSeedWords.WriteDownSeedPhraseFragment
@@ -123,7 +124,7 @@ class TariNavigator @Inject constructor(val prefs: SharedPrefsRepository, val ta
             is ContactBookNavigation.ToContactTransactionHistory -> toContactTransactionHistory(navigation.contact)
             is ContactBookNavigation.ToAddPhoneContact -> toAddPhoneContact()
             is ContactBookNavigation.ToSelectTariUser -> addFragment(SelectUserContactFragment.newInstance())
-            is ChooseRestoreOptionNavigation.ToEnterRestorePassword -> toEnterRestorePassword()
+            is ChooseRestoreOptionNavigation.ToEnterRestorePassword -> toEnterRestorePassword(navigation.optionType)
             is ChooseRestoreOptionNavigation.OnRestoreCompleted -> onRestoreCompleted()
             is ChooseRestoreOptionNavigation.ToRestoreWithRecoveryPhrase -> toRestoreWithRecoveryPhrase()
             is AllSettingsNavigation.ToBugReporting -> DebugActivity.launch(activity, DebugNavigation.BugReport)
@@ -194,7 +195,7 @@ class TariNavigator @Inject constructor(val prefs: SharedPrefsRepository, val ta
         activity.startActivity(intent)
     }
 
-    private fun toEnterRestorePassword() = addFragment(EnterRestorationPasswordFragment.newInstance())
+    private fun toEnterRestorePassword(optionType: BackupOptionType) = addFragment(EnterRestorationPasswordFragment.newInstance(optionType))
 
     private fun toRestoreWithRecoveryPhrase() = addFragment(InputSeedWordsFragment.newInstance())
 

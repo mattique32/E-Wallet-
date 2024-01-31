@@ -30,7 +30,7 @@ class StagedWalletSecurityManager @Inject constructor(
         get() = tariSettingsSharedRepository.hasVerifiedSeedWords
 
     private val isBackupOn
-        get() = backupPrefsRepository.getOptionList.any { it.isEnable }
+        get() = backupPrefsRepository.optionList.any { it.isEnabled }
 
     private val isBackupPasswordSet
         get() = !backupPrefsRepository.backupPassword.isNullOrEmpty()
